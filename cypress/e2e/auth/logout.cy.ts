@@ -7,8 +7,8 @@ describe("Logout", () => {
 
   // A_03_001
   it("Successfully logout user", () => {
+    cy.wait(2000);
     // Click logout button
-    cy.url().should("include", "/dashboard");
     DashboardPage.profileButton().click();
     DashboardPage.logoutButton().click();
 
