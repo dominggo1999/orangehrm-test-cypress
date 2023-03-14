@@ -38,7 +38,7 @@ class LoginPage {
   }
 
   forgotPasswordLink() {
-    return cy.get(".orangehrm-login-form orangehrm-login-forgot > p");
+    return cy.get(".orangehrm-login-forgot > .oxd-text");
   }
 
   invalidCredentialsMsg() {
