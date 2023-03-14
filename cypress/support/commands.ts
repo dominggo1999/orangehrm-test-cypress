@@ -1,22 +1,18 @@
 /// <reference types="cypress" />
 import { VALID_PASSWORD, VALID_USERNAME } from "cypress/config";
+import { LoginPage } from "cypress/page-objects";
 
 Cypress.Commands.add("loginWith", (username, password) => {
   // visit the login page
-  cy.visit(
-    "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
-  );
+  LoginPage.visit();
 
   // enter the username and password
-  cy.get(":nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input").type(
-    username,
-  );
-  cy.get(":nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input").type(
-    password,
-  );
+  LoginPage.usernameField().type(username);
+
+  LoginPage.passwordField().type(password);
 
   // click the login button
-  cy.get(".oxd-button").click();
+  LoginPage.loginButton().click();
 });
 
 Cypress.Commands.add("login", () => {

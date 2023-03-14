@@ -16,7 +16,8 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "config/*": ["./cypress/config/*"]
+      "config/*": ["cypress/config/*"],
+      "page-objects/*": ["cypress/page-objects/*"]
     }
   },
   "include": ["**/*.ts"]
