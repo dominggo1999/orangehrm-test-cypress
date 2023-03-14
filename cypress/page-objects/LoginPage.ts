@@ -42,7 +42,7 @@ class LoginPage {
   }
 
   invalidCredentialsMsg() {
-    return cy.get(".orangehrm-login-form oxd-alert-content--error > p");
+    return cy.get(".oxd-alert-content > .oxd-text");
   }
 }
 

@@ -7,9 +7,9 @@ Cypress.Commands.add("loginWith", (username, password) => {
   LoginPage.visit();
 
   // enter the username and password
-  LoginPage.usernameField().type(username);
+  username && LoginPage.usernameField().type(username);
 
-  LoginPage.passwordField().type(password);
+  password && LoginPage.passwordField().type(password);
 
   // click the login button
   LoginPage.loginButton().click();
