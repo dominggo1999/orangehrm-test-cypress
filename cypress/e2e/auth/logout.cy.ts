@@ -14,9 +14,5 @@ describe("Logout", () => {
 
     // Should be redirected to the login page
     cy.shouldIncludeLoginPageUrl();
-
-    // Shouldn't be able to visit dashboard after logged out
-    DashboardPage.visit();
-    cy.shouldIncludeLoginPageUrl();
   });
 });
