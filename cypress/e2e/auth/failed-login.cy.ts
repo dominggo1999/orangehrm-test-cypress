@@ -7,15 +7,10 @@ import {
 import { LoginPage } from "cypress/page-objects";
 
 describe("Failed Login", () => {
-  const checkUrlIncludesLoginPage = () => {
-    // If the login fails, then the URL should remain the same.
-    cy.url().should("include", LoginPage.url);
-  };
-
   // A_02_001
   it("Invalid username", () => {
     cy.loginWith(INVALID_USERNAME, VALID_PASSWORD).then(() => {
-      checkUrlIncludesLoginPage();
+      cy.shouldIncludeLoginPageUrl();
       LoginPage.invalidCredentialsMsg().should("exist");
     });
   });
@@ -23,7 +18,7 @@ describe("Failed Login", () => {
   // A_02_002
   it("Invalid password", () => {
     cy.loginWith(VALID_USERNAME, INVALID_PASSWORD).then(() => {
-      checkUrlIncludesLoginPage();
+      cy.shouldIncludeLoginPageUrl();
       LoginPage.invalidCredentialsMsg().should("exist");
     });
   });
@@ -31,7 +26,7 @@ describe("Failed Login", () => {
   // A_02_003
   it("Blank username and blank password", () => {
     cy.loginWith("", "").then(() => {
-      checkUrlIncludesLoginPage();
+      cy.shouldIncludeLoginPageUrl();
       LoginPage.usernameErrorMsg().should("exist");
       LoginPage.passwordErrorMsg().should("exist");
     });
@@ -40,7 +35,7 @@ describe("Failed Login", () => {
   // A_02_004
   it("Valid username, blank password", () => {
     cy.loginWith(VALID_USERNAME, "").then(() => {
-      checkUrlIncludesLoginPage();
+      cy.shouldIncludeLoginPageUrl();
       LoginPage.passwordErrorMsg().should("exist");
     });
   });
@@ -48,7 +43,7 @@ describe("Failed Login", () => {
   // A_02_005
   it("Blank username, valid password", () => {
     cy.loginWith("", VALID_PASSWORD).then(() => {
-      checkUrlIncludesLoginPage();
+      cy.shouldIncludeLoginPageUrl();
       LoginPage.usernameErrorMsg().should("exist");
     });
   });

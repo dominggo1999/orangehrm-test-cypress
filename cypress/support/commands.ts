@@ -19,6 +19,10 @@ Cypress.Commands.add("login", () => {
   cy.loginWith(VALID_USERNAME, VALID_PASSWORD);
 });
 
+Cypress.Commands.add("shouldIncludeLoginPageUrl", () => {
+  cy.url().should("include", LoginPage.url);
+});
+
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Cypress {
@@ -31,6 +35,10 @@ declare global {
        * Logs in with valid username and password.
        */
       login(): Chainable<void>;
+      /**
+       * Check if
+       */
+      shouldIncludeLoginPageUrl(): Chainable<void>;
     }
   }
 }
