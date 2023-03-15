@@ -1,4 +1,4 @@
-import DashboardPage from "page-objects/DashboardPage";
+import { DashboardPage } from "cypress/page-objects";
 
 describe("Route Protection", () => {
   // A_05_001
