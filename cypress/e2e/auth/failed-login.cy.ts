@@ -27,8 +27,14 @@ describe("Failed Login", () => {
   it("Blank username and blank password", () => {
     cy.loginWith("", "").then(() => {
       cy.shouldIncludeLoginPageUrl();
-      LoginPage.elements.usernameErrorMsg().should("exist");
-      LoginPage.elements.passwordErrorMsg().should("exist");
+      LoginPage.elements
+        .usernameErrorMsg()
+        .should("exist")
+        .should("have.text", "Required");
+      LoginPage.elements
+        .passwordErrorMsg()
+        .should("exist")
+        .should("have.text", "Required");
     });
   });
 
@@ -36,7 +42,10 @@ describe("Failed Login", () => {
   it("Valid username, blank password", () => {
     cy.loginWith(VALID_USERNAME, "").then(() => {
       cy.shouldIncludeLoginPageUrl();
-      LoginPage.elements.passwordErrorMsg().should("exist");
+      LoginPage.elements
+        .passwordErrorMsg()
+        .should("exist")
+        .should("have.text", "Required");
     });
   });
 
@@ -44,7 +53,10 @@ describe("Failed Login", () => {
   it("Blank username, valid password", () => {
     cy.loginWith("", VALID_PASSWORD).then(() => {
       cy.shouldIncludeLoginPageUrl();
-      LoginPage.elements.usernameErrorMsg().should("exist");
+      LoginPage.elements
+        .usernameErrorMsg()
+        .should("exist")
+        .should("have.text", "Required");
     });
   });
 });
