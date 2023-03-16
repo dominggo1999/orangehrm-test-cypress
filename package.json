@@ -29,5 +29,8 @@
     "*.json": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "short-uuid": "^4.2.2"
   }
 }

@@ -7,6 +7,7 @@ class HeaderSection {
         timeout: 5000,
       }),
     logoutButton: () => cy.get(":nth-child(4) > .oxd-userdropdown-link"),
+    activeUserName: () => cy.get(".oxd-userdropdown-name"),
   };
 
   hamburgertoggle() {

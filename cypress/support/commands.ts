@@ -28,6 +28,30 @@ Cypress.Commands.add("logout", () => {
   HeaderSection.logout();
 });
 
+Cypress.Commands.add("selectOption", (wrapper, value) => {
+  // Toggle options
+  wrapper.click();
+
+  // Get options
+  const options = wrapper.find('[role="listbox"]');
+
+  // Apply value
+  options.contains(value ? value : "-- Select --").click();
+});
+
+Cypress.Commands.add("fillAutocomplete", (wrapper, value) => {
+  //  Type value
+  wrapper.find("input").type(value);
+
+  // Get options
+  const options = wrapper.get('[role="listbox"]', {
+    timeout: 5000,
+  });
+
+  // Apply value
+  options.contains(value).click();
+});
+
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Cypress {
@@ -48,6 +72,20 @@ declare global {
        * Check if url include login page url
        */
       shouldIncludeLoginPageUrl(): Chainable<void>;
+      /**
+       * Custom choose option, since the website doesn't use the native select element
+       */
+      selectOption(
+        wrapper: Cypress.Chainable<JQuery<HTMLElement>>,
+        value: string,
+      ): Chainable<void>;
+      /**
+       * Fill autocomplete field
+       */
+      fillAutocomplete(
+        wrapper: Cypress.Chainable<JQuery<HTMLElement>>,
+        value: string,
+      ): Chainable<void>;
     }
   }
 }
