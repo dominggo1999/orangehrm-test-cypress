@@ -13,6 +13,10 @@ class SidebarSection {
   toggle() {
     this.elements.toggleButton().click();
   }
+
+  clickLinkWithText(text: string) {
+    this.elements.sidebar().contains(text).click();
+  }
 }
 
 export default new SidebarSection();
