@@ -17,7 +17,8 @@
     "baseUrl": ".",
     "paths": {
       "config/*": ["cypress/config/*"],
-      "page-objects/*": ["cypress/page-objects/*"]
+      "page-objects/*": ["cypress/page-objects/*"],
+      "section-objects/*": ["cypress/section-objects/*"]
     }
   },
   "include": ["**/*.ts"]
