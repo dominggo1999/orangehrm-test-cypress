@@ -7,11 +7,11 @@ describe("Sidebar", () => {
   });
 
   const isSidebarExpanded = () => {
-    SidebarSection.sidebar().should("not.have.class", "toggled");
+    SidebarSection.elements.sidebar().should("not.have.class", "toggled");
   };
 
   const isSidebarCollapsed = () => {
-    SidebarSection.sidebar().should("have.class", "toggled");
+    SidebarSection.elements.sidebar().should("have.class", "toggled");
   };
 
   // SB_01_001
@@ -37,7 +37,7 @@ describe("Sidebar", () => {
     const linkTexts = sidebarLinks.map((l) => l.text.toLowerCase());
     const linkPaths = sidebarLinks.map((l) => l.path);
 
-    SidebarSection.getAllLinks().each((link) => {
+    SidebarSection.elements.getAllLinks().each((link) => {
       expect(linkTexts).to.include(link.text().toLowerCase());
 
       expect(linkPaths).to.include(
@@ -48,9 +48,10 @@ describe("Sidebar", () => {
 
   // SB_01_004
   it("Sidebar Search Valid Value", () => {
-    SidebarSection.searchField().type("Admin");
-    SidebarSection.getAllLinks().should("have.length", 1);
-    SidebarSection.getAllLinks()
+    SidebarSection.elements.searchField().type("Admin");
+    SidebarSection.elements.getAllLinks().should("have.length", 1);
+    SidebarSection.elements
+      .getAllLinks()
       .first()
       .then((val) => {
         expect(val.text()).to.equal("Admin");
@@ -59,7 +60,7 @@ describe("Sidebar", () => {
 
   // SB_01_005
   it("Sidebar Search Invalid Value", () => {
-    SidebarSection.searchField().type("invalid_search");
-    SidebarSection.getAllLinks().should("have.length", 0);
+    SidebarSection.elements.searchField().type("invalid_search");
+    SidebarSection.elements.getAllLinks().should("have.length", 0);
   });
 });

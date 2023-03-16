@@ -1,22 +1,16 @@
 class DashboardPage {
-  url: string;
+  readonly url: string = "/dashboard/index";
 
-  constructor() {
-    this.url = "/dashboard/index";
-  }
+  elements = {
+    profileButton: () =>
+      cy.get(".oxd-userdropdown-tab", {
+        timeout: 5000,
+      }),
+    logoutButton: () => cy.get(":nth-child(4) > .oxd-userdropdown-link"),
+  };
 
   visit() {
     cy.visit(this.url);
-  }
-
-  profileButton() {
-    return cy.get(".oxd-userdropdown-tab", {
-      timeout: 5000,
-    });
-  }
-
-  logoutButton() {
-    return cy.get(":nth-child(4) > .oxd-userdropdown-link");
   }
 }
 

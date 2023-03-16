@@ -1,22 +1,17 @@
 class SidebarSection {
-  searchField() {
-    return cy.get(".oxd-sidepanel-body .oxd-main-menu-search > input");
-  }
+  elements = {
+    searchField: () =>
+      cy.get(".oxd-sidepanel-body .oxd-main-menu-search > input"),
 
-  sidebar() {
-    return cy.get(".oxd-sidepanel");
-  }
+    sidebar: () => cy.get(".oxd-sidepanel"),
 
-  toggleButton() {
-    return cy.get(".oxd-sidepanel-body > div > div > button");
-  }
+    toggleButton: () => cy.get(".oxd-sidepanel-body > div > div > button"),
+
+    getAllLinks: () => cy.get(".oxd-sidepanel-body ul.oxd-main-menu").find("a"),
+  };
 
   toggle() {
-    this.toggleButton().click();
-  }
-
-  getAllLinks() {
-    return cy.get(".oxd-sidepanel-body ul.oxd-main-menu").find("a");
+    this.elements.toggleButton().click();
   }
 }
 

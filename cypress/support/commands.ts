@@ -7,12 +7,12 @@ Cypress.Commands.add("loginWith", (username, password) => {
   LoginPage.visit();
 
   // enter the username and password
-  username && LoginPage.usernameField().type(username);
+  username && LoginPage.elements.usernameField().type(username);
 
-  password && LoginPage.passwordField().type(password);
+  password && LoginPage.elements.passwordField().type(password);
 
   // click the login button
-  LoginPage.loginButton().click();
+  LoginPage.submit();
 });
 
 Cypress.Commands.add("login", () => {
@@ -36,7 +36,7 @@ declare global {
        */
       login(): Chainable<void>;
       /**
-       * Check if
+       * Check if url include login page url
        */
       shouldIncludeLoginPageUrl(): Chainable<void>;
     }

@@ -11,7 +11,7 @@ describe("Failed Login", () => {
   it("Invalid username", () => {
     cy.loginWith(INVALID_USERNAME, VALID_PASSWORD).then(() => {
       cy.shouldIncludeLoginPageUrl();
-      LoginPage.invalidCredentialsMsg().should("exist");
+      LoginPage.elements.invalidCredentialsMsg().should("exist");
     });
   });
 
@@ -19,7 +19,7 @@ describe("Failed Login", () => {
   it("Invalid password", () => {
     cy.loginWith(VALID_USERNAME, INVALID_PASSWORD).then(() => {
       cy.shouldIncludeLoginPageUrl();
-      LoginPage.invalidCredentialsMsg().should("exist");
+      LoginPage.elements.invalidCredentialsMsg().should("exist");
     });
   });
 
@@ -27,8 +27,8 @@ describe("Failed Login", () => {
   it("Blank username and blank password", () => {
     cy.loginWith("", "").then(() => {
       cy.shouldIncludeLoginPageUrl();
-      LoginPage.usernameErrorMsg().should("exist");
-      LoginPage.passwordErrorMsg().should("exist");
+      LoginPage.elements.usernameErrorMsg().should("exist");
+      LoginPage.elements.passwordErrorMsg().should("exist");
     });
   });
 
@@ -36,7 +36,7 @@ describe("Failed Login", () => {
   it("Valid username, blank password", () => {
     cy.loginWith(VALID_USERNAME, "").then(() => {
       cy.shouldIncludeLoginPageUrl();
-      LoginPage.passwordErrorMsg().should("exist");
+      LoginPage.elements.passwordErrorMsg().should("exist");
     });
   });
 
@@ -44,7 +44,7 @@ describe("Failed Login", () => {
   it("Blank username, valid password", () => {
     cy.loginWith("", VALID_PASSWORD).then(() => {
       cy.shouldIncludeLoginPageUrl();
-      LoginPage.usernameErrorMsg().should("exist");
+      LoginPage.elements.usernameErrorMsg().should("exist");
     });
   });
 });

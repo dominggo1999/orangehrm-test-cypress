@@ -9,8 +9,8 @@ describe("Logout", () => {
   it("Successfully logout user", () => {
     cy.wait(2000);
     // Click logout button
-    DashboardPage.profileButton().click();
-    DashboardPage.logoutButton().click();
+    DashboardPage.elements.profileButton().click();
+    DashboardPage.elements.logoutButton().click();
 
     // Should be redirected to the login page
     cy.shouldIncludeLoginPageUrl();

@@ -1,10 +1,11 @@
 class HeaderSection {
-  hamburgerIcon() {
-    return cy.get(".oxd-topbar-header .oxd-topbar-header-hamburger");
-  }
+  elements = {
+    hamburgerIcon: () =>
+      cy.get(".oxd-topbar-header .oxd-topbar-header-hamburger"),
+  };
 
   hamburgertoggle() {
-    this.hamburgerIcon().click();
+    this.elements.hamburgerIcon().click();
   }
 }
 
