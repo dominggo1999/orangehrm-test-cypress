@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 import { VALID_PASSWORD, VALID_USERNAME } from "cypress/config";
 import { LoginPage } from "cypress/page-objects";
+import { HeaderSection } from "cypress/section-objects";
 
 Cypress.Commands.add("loginWith", (username, password) => {
   // visit the login page
@@ -23,6 +24,10 @@ Cypress.Commands.add("shouldIncludeLoginPageUrl", () => {
   cy.url().should("include", LoginPage.url);
 });
 
+Cypress.Commands.add("logout", () => {
+  HeaderSection.logout();
+});
+
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace Cypress {
@@ -35,6 +40,10 @@ declare global {
        * Logs in with valid username and password.
        */
       login(): Chainable<void>;
+      /**
+       * Logout
+       */
+      logout(): Chainable<void>;
       /**
        * Check if url include login page url
        */

@@ -2,10 +2,20 @@ class HeaderSection {
   elements = {
     hamburgerIcon: () =>
       cy.get(".oxd-topbar-header .oxd-topbar-header-hamburger"),
+    profileButton: () =>
+      cy.get(".oxd-userdropdown-tab", {
+        timeout: 5000,
+      }),
+    logoutButton: () => cy.get(":nth-child(4) > .oxd-userdropdown-link"),
   };
 
   hamburgertoggle() {
     this.elements.hamburgerIcon().click();
+  }
+
+  logout() {
+    this.elements.profileButton().click();
+    this.elements.logoutButton().click();
   }
 }
 
