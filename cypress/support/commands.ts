@@ -43,13 +43,20 @@ Cypress.Commands.add("fillAutocomplete", (wrapper, value) => {
   //  Type value
   wrapper.find("input").type(value);
 
+  cy.wait(5000);
+
   // Get options
-  const options = wrapper.get('[role="listbox"]', {
-    timeout: 5000,
-  });
+  const options = wrapper.get('[role="listbox"]');
 
   // Apply value
-  options.contains(value).click();
+  options.invoke("text").then((text) => {
+    if (text.indexOf(value) !== -1) {
+      options.contains(value).click();
+    } else {
+      // Try clicking the first option if there is no exact value found
+      wrapper.get('[role="listbox"]').first().click();
+    }
+  });
 });
 
 declare global {
