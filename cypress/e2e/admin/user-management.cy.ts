@@ -151,7 +151,7 @@ describe("User management", () => {
   });
 
   // ADM_02_009
-  it.only("Delete user", () => {
+  it("Delete user", () => {
     // Navigate to AddUser page
     UsersPage.elements
       .lastUserUsername()
